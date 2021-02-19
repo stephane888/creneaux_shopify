@@ -1,0 +1,31 @@
+creneaux_shopify.example:
+  path: '/creneaux-shopify/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\creneaux_shopify\Controller\CreneauxShopifyController::build'
+  requirements:
+    _permission: 'access content'
+
+creneaux_shopify.settings_form:
+  path: '/admin/config/system/creneaux-shopify'
+  defaults:
+    _title: 'Creneaux Shopify settings'
+    _form: 'Drupal\creneaux_shopify\Form\SettingsForm'
+  requirements:
+    _permission: 'administer creneaux_shopify configuration'
+
+creneaux_shopify.shopify:
+  path: '/app/creneaux/shopify'
+  defaults:
+    _title: 'Configuration des Créneaux'
+    _controller: '\Drupal\creneaux_shopify\Controller\ShopifyController::build'
+  requirements:
+    _permission: 'access content'
+
+creneaux_shopify.shopify_permission:
+  path: '/app/creneaux/shopify/get-permissions'
+  defaults:
+    _title: 'Recuperation des permissions'
+    _controller: '\Drupal\creneaux_shopify\Controller\ShopifyPermissionsController::build'
+  requirements:
+    _permission: 'access content'

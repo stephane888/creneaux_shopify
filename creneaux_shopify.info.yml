@@ -1,0 +1,8 @@
+name: Creneaux Shopify
+type: module
+description: module de configuration de creneau
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - restui

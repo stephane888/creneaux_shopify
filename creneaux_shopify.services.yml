@@ -1,0 +1,6 @@
+services:
+  creneaux_shopify.event_subscriber:
+    class: Drupal\creneaux_shopify\EventSubscriber\CreneauxShopifySubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }
