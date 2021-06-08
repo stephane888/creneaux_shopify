@@ -34,4 +34,19 @@ vuejs:
     url: https://github.com/vuejs/vue/blob/dev/LICENSE
     gpl-compatible: true
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js: {type: external, minified: true}
+    https://cdn.jsdelivr.net/npm/vue@2.6.12: {type: external, minified: true}
+
+# 
+creneaux_shopify_configs:
+  js:
+    App/AppAll/AppAllCreneaux.umd.min.js: {}
+  css:
+    component:
+      css/creneaux-shopify.css: {}
+  dependencies:
+    - core/drupalSettings
+    - creneaux_shopify/vuejs
+
+    
+  
+    

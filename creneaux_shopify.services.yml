@@ -4,3 +4,31 @@ services:
     arguments: ['@messenger']
     tags:
       - { name: event_subscriber }
+      
+  creneaux_shopify.shopify_host:
+    class: Drupal\creneaux_shopify\Services\ShopifyHost
+    arguments: ['@database']
+    
+  creneaux_shopify.valid_permission:
+    class: Drupal\creneaux_shopify\Services\ValidPermission
+    arguments: ['@request_stack','@creneaux_shopify.shopify_host']
+    
+  creneaux_shopify.store:
+    class: Drupal\creneaux_shopify\Services\StoreCreneaux
+    arguments: []
+   
+  creneaux_shopify.ressources:
+    class: Drupal\creneaux_shopify\Services\ApiRest\Ressources
+    arguments: ['@request_stack']
+    
+  creneaux_shopify.switch_action:
+    class: Drupal\creneaux_shopify\Services\ApiRest\SwitchAction
+    arguments: ['@creneaux_shopify.ressources']
+  
+  creneaux_shopify.tests:
+    class: Drupal\creneaux_shopify\Services\CreneauxTest
+    arguments: ['@request_stack','@database','@ajax_status.status']
+    
+  creneaux_shopify.request:
+    class: Drupal\creneaux_shopify\Services\ApiRest\Request
+    arguments: ['@request_stack','@creneaux_shopify.switch_action','@ajax_status.status']

@@ -1,8 +1,8 @@
 creneaux_shopify.example:
-  path: '/creneaux-shopify/example'
+  path: '/creneaux-shopify/test-config'
   defaults:
     _title: 'Example'
-    _controller: '\Drupal\creneaux_shopify\Controller\CreneauxShopifyController::build'
+    _controller: '\Drupal\creneaux_shopify\Controller\CreneauxShopifyController::TestConfig'
   requirements:
     _permission: 'access content'
 
@@ -23,9 +23,51 @@ creneaux_shopify.shopify:
     _permission: 'access content'
 
 creneaux_shopify.shopify_permission:
-  path: '/app/creneaux/shopify/get-permissions'
+  path: '/app/creneaux/shopify/valid-permissions'
   defaults:
-    _title: 'Recuperation des permissions'
+    _title: "Validation  de l'hote"
     _controller: '\Drupal\creneaux_shopify\Controller\ShopifyPermissionsController::build'
   requirements:
     _permission: 'access content'
+
+creneaux_shopify.configs:
+  path: '/app/creneaux/shopify/configs'
+  defaults:
+    _title: 'Configuration des Créneaux'
+    _controller: '\Drupal\creneaux_shopify\Controller\ShopifyController::Configs'
+  requirements:
+    _permission: 'access content'
+    
+# Les parametres sont dans le body.  
+# permet de communiquer avec le serveur Shopify
+creneaux_shopify.request:   
+  path: "/app/creneaux/shopify/request/{action}"
+  methods: [POST]
+  defaults:
+    _title: 'Insertion et Mise à jour des données'
+    _controller: '\Drupal\creneaux_shopify\Controller\ShopifyController::Request'
+  requirements:
+    _permission: 'access content'
+
+
+
+#####################################
+# Doit etre dans un autre controlleur 
+creneaux_shopify.add:   
+  path: "/api/shopify/creneaux/add.js"
+  defaults:
+    _title: 'Insertion et Mise à jour des données'
+    _controller: '\Drupal\creneaux_shopify\Controller\ShopifyController::Add'
+  requirements:
+    _permission: 'access content'
+
+# Doit etre dans un autre controlleur
+creneaux_shopify.checks:   
+  path: "/api/shopify/creneaux/checks.js"
+  defaults:
+    _title: 'Insertion et Mise à jour des données'
+    _controller: '\Drupal\creneaux_shopify\Controller\ShopifyController::Checks'
+  requirements:
+    _permission: 'access content'
+    
+    

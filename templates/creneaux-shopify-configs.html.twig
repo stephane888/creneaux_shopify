@@ -1,0 +1,12 @@
+{# Recuperation des données pour l'administration #}
+<script>
+    const configs = {{children['#configsCreneau']|raw}};
+    if(configs.creneau_configs){
+    	window.wbu_current_date = "{{ "now"|date("d-m-Y H:i", "Europe/Paris") }}:00";
+    	window.creneau_configs = configs.creneau_configs;
+        window.creneau_types = configs.creneau_types;
+        window.creneau_filters = configs.creneau_filters;        
+    }
+    console.log('window.creneau_configs : ', window.creneau_configs); 
+</script>
+<section id="app"></section> 

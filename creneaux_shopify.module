@@ -8,3 +8,52 @@
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
  */
+
+/**
+ * Implements hook_theme().
+ */
+function creneaux_shopify_theme()
+{
+  return [
+    'creneaux_shopify_configs' => [
+      'render element' => 'children'
+    ]
+  ];
+}
+
+function creneaux_shopify_page_attachments_alter(array &$attachments)
+{
+  $librairieRemove = [
+    'wb_universe/lazysize',
+    'wb_universe/global-style',
+    'wb_universe/google-police',
+    'wbu_entreprise/global-style',
+    'wbu_entreprise/owl'
+  ];
+  $parameters = \Drupal::routeMatch();
+  if ($parameters->getRouteName() == 'creneaux_shopify.configs') {
+    foreach ($librairieRemove as $value) {
+      if ($index = array_search($value, $attachments['#attached']['library'])) {
+        unset($attachments['#attached']['library'][$index]);
+      }
+    }
+  }
+}
+
+/**
+  "library" => array:13 [▼
+      0 => "contextual/drupal.contextual-links"
+      1 => "quickedit/quickedit"
+      2 => "system/base"
+      3 => "wb_universe/global-style"
+      4 => "wb_universe/fontawesome"
+      5 => "wb_universe/lazysize"
+      6 => "wb_universe/google-police"
+      7 => "wb_universe/google-analytics"
+      8 => "bootstrap_barrio/global-styling"
+      9 => "wbu_entreprise/global-style"
+      10 => "wbu_entreprise/fontawesome"
+      11 => "wbu_entreprise/owl"
+      12 => "core/drupal.active-link"
+    ]
+*/
